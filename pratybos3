@@ -1,0 +1,1 @@
+1. DELETE FROM Authors WHERE Authors.authorId = 9 OR Authors.authorId = 10

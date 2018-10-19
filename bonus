@@ -1,0 +1,19 @@
+SELECT 
+	n.newsId, 
+    n.date AS newsDate,
+    n.text AS newsText,
+    c.cdate AS commentDate,
+    c.ctext AS commentText
+FROM news AS n
+JOIN comments AS c
+ON c.newsId = n.newsId
+WHERE c.commentId =
+	( 
+		SELECT ci.commentId
+		FROM comments AS ci
+		WHERE ci.newsId = n.newsId
+		ORDER BY ci.newsId DESC
+		LIMIT 1
+    )
+ORDER BY n.date DESC
+LIMIT 10

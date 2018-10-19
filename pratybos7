@@ -1,0 +1,15 @@
+1. CREATE TABLE BooksAuthors (
+    authorId INT(11),
+    bookId INT(11)
+); 
+
+2.INSERT INTO BooksAuthors(BooksAuthors.authorId,BooksAuthors.bookId)
+SELECT Books.authorId, Books.bookId
+FROM Books;
+
+3. SELECT GROUP_CONCAT(Authors.name), Books.title From booksauthors
+INNER JOIN Authors ON Authors.authorId = booksauthors.authorId
+INNER JOIN Books ON Books.bookId = booksauthors.bookId
+GROUP BY Books.title
+
+4. ALTER TABLE Books CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci;
